@@ -1,6 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
 
+//------------------------
+//IMPORT EXTERNAL PACKAGES
+//------------------------
+import {IMailbox} from "./interfaces/IMailbox.sol";
+import {IInterchainGasPaymaster} from "./interfaces/IInterchainGasPaymaster.sol";
+
 /**
  * @title MegaMask
  * @dev A smart contract for managing product inventory and attestation on different chains.
@@ -9,6 +15,10 @@ contract MegaMask {
     //-----------------------------
     //DEFINE VARIABLES & CONSTANTS
     //-----------------------------
+    address public interchainGasPaymasterAddress;
+    address public mailboxAddress;
+
+    uint256 gasAmount;
 
     /**
      * @dev Struct to store product details.
@@ -72,6 +82,20 @@ contract MegaMask {
         string price
     );
 
+    /**
+     * @dev Event triggered when the interchain gas paymaster address is updated.
+     * @param newInterchainGasPaymasterAddress The new interchain gas paymaster address.
+     */
+    event InterchainGasPaymasterUpdated(
+        address newInterchainGasPaymasterAddress
+    );
+
+    /**
+     * @dev Event triggered when the mailbox address is updated.
+     * @param newMailboxAddress The new mailbox address.
+     */
+    event MailboxUpdated(address newMailboxAddress);
+
     //-----------------------------
     //DEFINE MODIFIERS
     //-----------------------------
@@ -87,6 +111,21 @@ contract MegaMask {
         );
         _;
     }
+
+    //-----------------------------
+    //CONSTRUCTOR FUNCTION
+    //-----------------------------
+    constructor(
+        address _interchainGasPaymasterAddress,
+        address _mailboxAddress
+    ) {
+        interchainGasPaymasterAddress = _interchainGasPaymasterAddress;
+        mailboxAddress = _mailboxAddress;
+    }
+
+    IMailbox mailbox = IMailbox(mailboxAddress);
+    IInterchainGasPaymaster igp =
+        IInterchainGasPaymaster(interchainGasPaymasterAddress);
 
     //-----------------------------
     //DEFINE SETTER FUNCTIONS
@@ -174,5 +213,43 @@ contract MegaMask {
                 smartAccountToInventory[msg.sender].length - 1
             );
         }
+    }
+
+    //change the gas amount
+    function _changeGasAmount(uint256 _gasAmount) external {
+        gasAmount = _gasAmount;
+    }
+
+    //change the interchain gas paymaster address
+    function changeInterchainGasPaymasterAddress(
+        address _interchainGasPaymasterAddress
+    ) external {
+        interchainGasPaymasterAddress = _interchainGasPaymasterAddress;
+        emit InterchainGasPaymasterUpdated(_interchainGasPaymasterAddress);
+    }
+
+    //change the mailbox address
+    function changeMailboxAddress(address _mailboxAddress) external {
+        mailboxAddress = _mailboxAddress;
+        emit MailboxUpdated(_mailboxAddress);
+    }
+
+    //this is used to call AttestRecipient contract on Arbitrum Goerli
+    function _sendInterchainCall(
+        uint32 destinationDomain,
+        bytes32 _recipientAddress,
+        bytes calldata _messageBody
+    ) external payable {
+        bytes32 messageId = mailbox.dispatch(
+            destinationDomain,
+            _recipientAddress,
+            _messageBody
+        );
+        igp.payForGas{value: msg.value}(
+            messageId, // The ID of the message that was just dispatched
+            destinationDomain, // The destination domain of the message
+            gasAmount, // 550k gas to use in the recipient's handle function
+            msg.sender // refunds go to msg.sender, who paid the msg.value
+        );
     }
 }
