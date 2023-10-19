@@ -14,12 +14,12 @@ contract MegaMask {
 
     mapping (address => Product[]) public smartAccountToInventory; //gets the product inventory based on the detected smart account address
 
-    //TODO: function to post product details to different chains at once
-    //TODO: function to fetch product details from different chain at once, getProduct(address) -> Product[]
-    //TODO: post attestation as merchant to attestation contract in Sepolia
+    //TODO: function to post product details to different chains at once (hyperlane)
+    //TODO: function to fetch product details from different chain at once, getProduct(address) -> Product[] (hyperlane)
+    //TODO: post attestation as merchant to attestation contract in Sepolia (wormhole)
     //TODO: resolver contract to check that a merchant attestaion exists in Sepolia
-    //TODO: function to make an attestation that bill paid
-    //TODO: function to fetch attestation from sepolia
+    //TODO: function to make an attestation that bill paid (wormhole)
+    //TODO: function to fetch attestation from sepolia (hyperlane)
 
 
 
