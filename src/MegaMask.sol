@@ -13,6 +13,7 @@ contract MegaMask {
     }
 
     mapping (address => Product[]) public smartAccountToInventory; //gets the product inventory based on the detected smart account address
+    
 
     //TODO: function to post product details to different chains at once (hyperlane)
     //TODO: function to fetch product details from different chain at once, getProduct(address) -> Product[] (hyperlane)
