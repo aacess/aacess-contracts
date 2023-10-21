@@ -74,8 +74,24 @@ contract MegaMaskRecipient is
         bytes calldata _data
     ) external virtual override onlyMailbox {
         emit ReceivedMessage(_origin, _sender, string(_data));
-        lastSender = _sender;
-        lastData = _data;
+        bytes4 functionSignature = abi.decode(_data[:4], (bytes4));
+        if (functionSignature == this.addProduct.selector) {
+            (
+                string memory _productPicCID,
+                string memory _productName,
+                string memory _price
+            ) = abi.decode(_data[4:], (string, string, string));
+            addProduct(_productPicCID, _productName, _price);
+        } else if (functionSignature == this.addMultipleProducts.selector) {
+            (
+                string[] memory _productPicCIDs,
+                string[] memory _productNames,
+                string[] memory _prices
+            ) = abi.decode(_data[4:], (string[], string[], string[]));
+            addMultipleProducts(_productPicCIDs, _productNames, _prices);
+        } else {
+            revert("Unknown function");
+        }
     }
 
     function setInterchainSecurityModule(address _ism) external {
@@ -107,7 +123,7 @@ contract MegaMaskRecipient is
         string memory _productPicCID,
         string memory _productName,
         string memory _price
-    ) external payable {
+    ) public payable {
         _updateInstances();
         emit ReceivedAddProductRequest(
             msg.sender,
@@ -128,7 +144,7 @@ contract MegaMaskRecipient is
         string[] memory _productPicCIDs,
         string[] memory _productNames,
         string[] memory _prices
-    ) external payable {
+    ) public payable {
         _updateInstances();
         emit ReceivedAddMultipleProductsRequest(
             msg.sender,

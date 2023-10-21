@@ -891,8 +891,8 @@
       }
     },
     "src/MegaMask.sol": {
-      "lastModificationDate": 1697875071838,
-      "contentHash": "f2548f09913f79a384c048d2c121e822",
+      "lastModificationDate": 1697905378643,
+      "contentHash": "16e343e2e9b4a6af579a208c5a4171cc",
       "sourceName": "src/MegaMask.sol",
       "solcConfig": {
         "settings": {
@@ -935,8 +935,8 @@
       }
     },
     "src/MegaMaskRecipient.sol": {
-      "lastModificationDate": 1697875259661,
-      "contentHash": "7ca12e0f0883f78028001e746644bd30",
+      "lastModificationDate": 1697906178432,
+      "contentHash": "2ab6b8438df54bb08853be6e6e3e1501",
       "sourceName": "src/MegaMaskRecipient.sol",
       "solcConfig": {
         "settings": {

@@ -101,18 +101,6 @@ contract MegaMask {
     //DEFINE MODIFIERS
     //-----------------------------
 
-    /**
-     * @dev Modifier to restrict function access to only smart accounts.
-     * It checks if the caller is the original sender of the transaction.
-     */
-    modifier onlySmartAccount() {
-        require(
-            msg.sender == tx.origin,
-            "Only smart account can call this function"
-        );
-        _;
-    }
-
     //-----------------------------
     //CONSTRUCTOR FUNCTION
     //-----------------------------
@@ -140,7 +128,7 @@ contract MegaMask {
         string memory _productPicCID,
         string memory _productName,
         string memory _price
-    ) public payable onlySmartAccount {
+    ) public payable {
         //create a new product
         Product memory newProduct = Product({
             productPicCID: _productPicCID,
@@ -149,15 +137,15 @@ contract MegaMask {
         });
 
         //add the new product to the inventory
-        smartAccountToInventory[msg.sender].push(newProduct);
+        smartAccountToInventory[tx.origin].push(newProduct);
 
         //emit event and also mention which index the product is added to
         emit ProductAddedToOriginChain(
-            msg.sender,
+            tx.origin,
             _productPicCID,
             _productName,
             _price,
-            smartAccountToInventory[msg.sender].length - 1
+            smartAccountToInventory[tx.origin].length - 1
         );
     }
 
@@ -166,7 +154,7 @@ contract MegaMask {
         string[] memory _productPicCIDs,
         string[] memory _productNames,
         string[] memory _prices
-    ) external payable onlySmartAccount {
+    ) external payable {
         //loop through the product details and add them to the inventory
         for (uint256 i = 0; i < _productPicCIDs.length; i++) {
             addProduct(_productPicCIDs[i], _productNames[i], _prices[i]);
@@ -176,6 +164,21 @@ contract MegaMask {
     //-----------------------------
     //DEFINE GETTER FUNCTIONS
     //-----------------------------
+
+    //getter function to get the product inventory
+    function getProductInventory(
+        address _smartAccountAddress
+    ) external view returns (Product[] memory) {
+        return smartAccountToInventory[_smartAccountAddress];
+    }
+
+    //getter function to get the product details
+    function getProduct(
+        address _smartAccountAddress,
+        uint256 _productIndex
+    ) external view returns (Product memory) {
+        return smartAccountToInventory[_smartAccountAddress][_productIndex];
+    }
 
     //-------------------------
     //DEFINE INTERNAL FUNCTIONS
@@ -217,31 +220,30 @@ contract MegaMask {
     }
 
     //setter function to propagate product details to different chains
-    function propagateProductDetailsToDifferentChains(
-        uint256 _originChainId,
-        string memory _productPicCID,
-        string memory _productName,
-        string memory _price
-    ) public payable {
-        //loop through the chain ids to propagate to, except the origin chain
-        for (uint256 i = 0; i < chainIdsToPropagateTo.length; i++) {
-            //emit event and also mention which index the product is added to
-            emit ProductPropagatedToDifferentChains(
-                msg.sender,
-                _productPicCID,
-                _productName,
-                _price,
-                smartAccountToInventory[msg.sender].length - 1
-            );
-        }
-    }
+    // function propagateProductDetailsToDifferentChains(
+    //     uint256 _originChainId,
+    //     string memory _productPicCID,
+    //     string memory _productName,
+    //     string memory _price
+    // ) external {
+    //     //loop through the chain ids to propagate to, except the origin chain
+    //     for (uint256 i = 0; i < chainIdsToPropagateTo.length; i++) {
+    //         if (chainIdsToPropagateTo[i] != _originChainId) {
+    //             sendInterchainCall(
+    //                 uint32(chainIdsToPropagateTo[i]),
+    //                 keccak256(abi.encodePacked(tx.origin)),
+    //                 abi.encode(_productPicCID, _productName, _price)
+    //             );
+    //         }
+    //     }
+    // }
 
     //this is used to call AttestRecipient contract on Arbitrum Goerli
     function sendInterchainCall(
         uint32 _destinationDomain,
         bytes32 _recipientAddress,
         bytes calldata _messageBody
-    ) public payable {
+    ) public {
         _updateInstances(); // Ensure instances are up-to-date
         bytes32 messageId = mailbox.dispatch(
             _destinationDomain,
@@ -258,6 +260,11 @@ contract MegaMask {
             gasAmount, // 550k gas to use in the recipient's handle function
             address(this) // refunds go to msg.sender, who paid the msg.value
         );
+    }
+
+    //transfer function to transfer the funds to another contract
+    function transferFunds(address payable _to, uint256 _amount) external {
+        _to.transfer(_amount);
     }
 
     receive() external payable {}
