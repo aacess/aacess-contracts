@@ -11,7 +11,7 @@ import {IInterchainGasPaymaster} from "./interfaces/IInterchainGasPaymaster.sol"
  * @title MegaMask
  * @dev A smart contract for managing product inventory and attestation on different chains.
  */
-contract MegaMask {
+contract MegaMaskProduct {
     //-----------------------------
     //DEFINE VARIABLES & CONSTANTS
     //-----------------------------
@@ -33,7 +33,14 @@ contract MegaMask {
         string price;
     }
 
-    //another variable to store the chain ids of the chains where the product details are propagated
+    struct ChainIdToRecipientContractAddress {
+        uint256 chainId;
+        address contractAddress;
+    }
+
+    mapping(uint256 => ChainIdToRecipientContractAddress)
+        public chainIdToContractAddress;
+
     uint256[] public chainIdsToPropagateTo;
 
     /**
@@ -63,6 +70,7 @@ contract MegaMask {
     // another event to say that the product details are propagated to different chains
     event ProductPropagatedToDifferentChains(
         address indexed smartAccountAddress,
+        uint256 indexed chainId,
         string productPicCID,
         string productName,
         string price,
@@ -127,8 +135,9 @@ contract MegaMask {
     function addProduct(
         string memory _productPicCID,
         string memory _productName,
-        string memory _price
-    ) public payable {
+        string memory _price,
+        address _requestor
+    ) public {
         //create a new product
         Product memory newProduct = Product({
             productPicCID: _productPicCID,
@@ -137,28 +146,16 @@ contract MegaMask {
         });
 
         //add the new product to the inventory
-        smartAccountToInventory[tx.origin].push(newProduct);
+        smartAccountToInventory[_requestor].push(newProduct);
 
         //emit event and also mention which index the product is added to
         emit ProductAddedToOriginChain(
-            tx.origin,
+            _requestor,
             _productPicCID,
             _productName,
             _price,
-            smartAccountToInventory[tx.origin].length - 1
+            smartAccountToInventory[_requestor].length - 1
         );
-    }
-
-    //setter function to add multiple products to inventory
-    function addMultipleProducts(
-        string[] memory _productPicCIDs,
-        string[] memory _productNames,
-        string[] memory _prices
-    ) external payable {
-        //loop through the product details and add them to the inventory
-        for (uint256 i = 0; i < _productPicCIDs.length; i++) {
-            addProduct(_productPicCIDs[i], _productNames[i], _prices[i]);
-        }
     }
 
     //-----------------------------
@@ -168,7 +165,7 @@ contract MegaMask {
     //getter function to get the product inventory
     function getProductInventory(
         address _smartAccountAddress
-    ) external view returns (Product[] memory) {
+    ) public view returns (Product[] memory) {
         return smartAccountToInventory[_smartAccountAddress];
     }
 
@@ -176,7 +173,7 @@ contract MegaMask {
     function getProduct(
         address _smartAccountAddress,
         uint256 _productIndex
-    ) external view returns (Product memory) {
+    ) public view returns (Product memory) {
         return smartAccountToInventory[_smartAccountAddress][_productIndex];
     }
 
@@ -212,31 +209,53 @@ contract MegaMask {
         _updateInstances(); // Update instances after changing the address
     }
 
-    //setter function to update the chain ids to propagate to
-    function updateChainIdsToPropagateTo(
-        uint256[] memory _chainIdsToPropagateTo
+    //setter function to update the chain ids to propagate to, use the array to get the latest index to update the mapping
+    function addChainIdToPropagateTo(
+        uint256 _chainId,
+        address _recipientContractAddress
     ) external {
-        chainIdsToPropagateTo = _chainIdsToPropagateTo;
+        //add the chain id to the array
+        chainIdsToPropagateTo.push(_chainId);
+
+        //add the chain id and the contract address to the mapping
+        chainIdToContractAddress[
+            chainIdsToPropagateTo.length
+        ] = ChainIdToRecipientContractAddress({
+            chainId: _chainId,
+            contractAddress: _recipientContractAddress
+        });
     }
 
-    //setter function to propagate product details to different chains
-    // function propagateProductDetailsToDifferentChains(
-    //     uint256 _originChainId,
-    //     string memory _productPicCID,
-    //     string memory _productName,
-    //     string memory _price
-    // ) external {
-    //     //loop through the chain ids to propagate to, except the origin chain
-    //     for (uint256 i = 0; i < chainIdsToPropagateTo.length; i++) {
-    //         if (chainIdsToPropagateTo[i] != _originChainId) {
-    //             sendInterchainCall(
-    //                 uint32(chainIdsToPropagateTo[i]),
-    //                 keccak256(abi.encodePacked(tx.origin)),
-    //                 abi.encode(_productPicCID, _productName, _price)
-    //             );
-    //         }
-    //     }
-    // }
+    //function to propagate to other chains other than the origin chain, it accepts the origin chain ID so it knows which to skip, and also the product index
+    function propagateToOtherChains(
+        uint256 _originChainId,
+        bytes calldata _data
+    ) external {
+        //loop through the chain ids to propagate to
+        for (uint256 i = 0; i < chainIdsToPropagateTo.length; i++) {
+            //check if the chain id is not the origin chain id
+            if (chainIdToContractAddress[i].chainId != _originChainId) {
+                //call the sendInterchainCall function to send the interchain call
+                sendInterchainCall(
+                    uint32(chainIdToContractAddress[i].chainId),
+                    bytes32(
+                        bytes20(chainIdToContractAddress[i].contractAddress)
+                    ),
+                    _data
+                );
+
+                //emit event
+                emit ProductPropagatedToDifferentChains(
+                    msg.sender,
+                    chainIdToContractAddress[i].chainId,
+                    smartAccountToInventory[msg.sender][i].productPicCID,
+                    smartAccountToInventory[msg.sender][i].productName,
+                    smartAccountToInventory[msg.sender][i].price,
+                    i
+                );
+            }
+        }
+    }
 
     //this is used to call AttestRecipient contract on Arbitrum Goerli
     function sendInterchainCall(
@@ -265,6 +284,27 @@ contract MegaMask {
     //transfer function to transfer the funds to another contract
     function transferFunds(address payable _to, uint256 _amount) external {
         _to.transfer(_amount);
+    }
+
+    //get contract balance
+    function getContractBalance() external view returns (uint256) {
+        return address(this).balance;
+    }
+
+    //get the list of chain ids to propagate to
+    function getChainIdsToPropagateTo()
+        external
+        view
+        returns (uint256[] memory)
+    {
+        return chainIdsToPropagateTo;
+    }
+
+    //get the chain id to contract address mapping
+    function getChainIdToContractAddress(
+        uint256 _index
+    ) external view returns (ChainIdToRecipientContractAddress memory) {
+        return chainIdToContractAddress[_index];
     }
 
     receive() external payable {}
