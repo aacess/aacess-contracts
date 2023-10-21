@@ -34,8 +34,8 @@ contract MegaMaskProduct {
     }
 
     struct ChainIdToRecipientContractAddress {
-        uint256 chainId;
-        address contractAddress;
+        uint32 chainId;
+        bytes32 contractAddress;
     }
 
     mapping(uint256 => ChainIdToRecipientContractAddress)
@@ -211,9 +211,18 @@ contract MegaMaskProduct {
 
     //setter function to update the chain ids to propagate to, use the array to get the latest index to update the mapping
     function addChainIdToPropagateTo(
-        uint256 _chainId,
-        address _recipientContractAddress
+        uint32 _chainId,
+        bytes32 _recipientContractAddress
     ) external {
+        //check if the chain id already exists in the array
+        for (uint256 i = 0; i < chainIdsToPropagateTo.length; i++) {
+            //check if the chain id already exists in the array
+            require(
+                chainIdsToPropagateTo[i] != _chainId,
+                "Chain ID already exists in the array"
+            );
+        }
+
         //add the chain id to the array
         chainIdsToPropagateTo.push(_chainId);
 
@@ -226,32 +235,33 @@ contract MegaMaskProduct {
         });
     }
 
+    //function to update the chain id to contract address mapping
+    function updateChainIdToContractAddress(
+        uint256 _index,
+        uint32 _chainId,
+        bytes32 _recipientContractAddress
+    ) external {
+        //update the chain id to contract address mapping
+        chainIdToContractAddress[_index] = ChainIdToRecipientContractAddress({
+            chainId: _chainId,
+            contractAddress: _recipientContractAddress
+        });
+    }
+
     //function to propagate to other chains other than the origin chain, it accepts the origin chain ID so it knows which to skip, and also the product index
     function propagateToOtherChains(
-        uint256 _originChainId,
+        uint32 _originChainId,
         bytes calldata _data
     ) external {
         //loop through the chain ids to propagate to
-        for (uint256 i = 0; i < chainIdsToPropagateTo.length; i++) {
+        for (uint256 i = 1; i <= chainIdsToPropagateTo.length; i++) {
             //check if the chain id is not the origin chain id
             if (chainIdToContractAddress[i].chainId != _originChainId) {
                 //call the sendInterchainCall function to send the interchain call
                 sendInterchainCall(
-                    uint32(chainIdToContractAddress[i].chainId),
-                    bytes32(
-                        bytes20(chainIdToContractAddress[i].contractAddress)
-                    ),
-                    _data
-                );
-
-                //emit event
-                emit ProductPropagatedToDifferentChains(
-                    msg.sender,
                     chainIdToContractAddress[i].chainId,
-                    smartAccountToInventory[msg.sender][i].productPicCID,
-                    smartAccountToInventory[msg.sender][i].productName,
-                    smartAccountToInventory[msg.sender][i].price,
-                    i
+                    chainIdToContractAddress[i].contractAddress,
+                    _data
                 );
             }
         }
