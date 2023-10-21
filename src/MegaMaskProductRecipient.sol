@@ -4,30 +4,25 @@ pragma solidity ^0.8.17;
 import {IMessageRecipient} from "./interfaces/IMessageRecipient.sol";
 import {IInterchainSecurityModule, ISpecifiesInterchainSecurityModule} from "./interfaces/IInterchainSecurityModule.sol";
 
-interface IMegaMask {
+interface IMegaMaskProduct {
     // Functions
     function addProduct(
         string memory _productPicCID,
         string memory _productName,
-        string memory _price
-    ) external payable;
-
-    function addMultipleProducts(
-        string[] memory _productPicCIDs,
-        string[] memory _productNames,
-        string[] memory _prices
+        string memory _price,
+        address requestor
     ) external payable;
 }
 
-contract MegaMaskRecipient is
+contract MegaMaskProductRecipient is
     IMessageRecipient,
     ISpecifiesInterchainSecurityModule,
-    IMegaMask
+    IMegaMaskProduct
 {
     address public megaMaskAddress;
     address public mailboxAddress;
 
-    IMegaMask public megaMask;
+    IMegaMaskProduct public megaMask;
     IInterchainSecurityModule public interchainSecurityModule;
 
     bytes32 public lastSender;
@@ -43,17 +38,10 @@ contract MegaMaskRecipient is
     );
 
     event ReceivedAddProductRequest(
-        address indexed caller,
         string productPicCID,
         string productName,
-        string price
-    );
-
-    event ReceivedAddMultipleProductsRequest(
-        address indexed caller,
-        string[] productPicCIDs,
-        string[] productNames,
-        string[] prices
+        string price,
+        address indexed requestor
     );
 
     // for access control on handle implementations
@@ -73,25 +61,25 @@ contract MegaMaskRecipient is
         bytes32 _sender,
         bytes calldata _data
     ) external virtual override onlyMailbox {
+        _updateInstances();
         emit ReceivedMessage(_origin, _sender, string(_data));
-        bytes4 functionSignature = abi.decode(_data[:4], (bytes4));
-        if (functionSignature == this.addProduct.selector) {
-            (
-                string memory _productPicCID,
-                string memory _productName,
-                string memory _price
-            ) = abi.decode(_data[4:], (string, string, string));
-            addProduct(_productPicCID, _productName, _price);
-        } else if (functionSignature == this.addMultipleProducts.selector) {
-            (
-                string[] memory _productPicCIDs,
-                string[] memory _productNames,
-                string[] memory _prices
-            ) = abi.decode(_data[4:], (string[], string[], string[]));
-            addMultipleProducts(_productPicCIDs, _productNames, _prices);
-        } else {
-            revert("Unknown function");
-        }
+        //for now, ignore adding multiple products
+        (
+            string memory _productPicCID,
+            string memory _productName,
+            string memory _price,
+            address _requestor
+        ) = abi.decode(_data[4:], (string, string, string, address));
+
+        emit ReceivedAddProductRequest(
+            _productPicCID,
+            _productName,
+            _price,
+            _requestor
+        );
+
+        megaMask.addProduct(_productPicCID, _productName, _price, _requestor);
+        lastSender = _sender;
     }
 
     function setInterchainSecurityModule(address _ism) external {
@@ -122,46 +110,11 @@ contract MegaMaskRecipient is
     function addProduct(
         string memory _productPicCID,
         string memory _productName,
-        string memory _price
-    ) public payable {
-        _updateInstances();
-        emit ReceivedAddProductRequest(
-            msg.sender,
-            _productPicCID,
-            _productName,
-            _price
-        );
-
-        return
-            megaMask.addProduct{value: msg.value}(
-                _productPicCID,
-                _productName,
-                _price
-            );
-    }
-
-    function addMultipleProducts(
-        string[] memory _productPicCIDs,
-        string[] memory _productNames,
-        string[] memory _prices
-    ) public payable {
-        _updateInstances();
-        emit ReceivedAddMultipleProductsRequest(
-            msg.sender,
-            _productPicCIDs,
-            _productNames,
-            _prices
-        );
-
-        return
-            megaMask.addMultipleProducts{value: msg.value}(
-                _productPicCIDs,
-                _productNames,
-                _prices
-            );
-    }
+        string memory _price,
+        address _requestor
+    ) public payable {}
 
     function _updateInstances() internal {
-        megaMask = IMegaMask(megaMaskAddress);
+        megaMask = IMegaMaskProduct(megaMaskAddress);
     }
 }
