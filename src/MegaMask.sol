@@ -17,9 +17,10 @@ contract MegaMask {
     //-----------------------------
     address public interchainGasPaymasterAddress;
     address public mailboxAddress;
+    uint256 gasAmount = 100000;
 
-    uint256 gasAmount;
-
+    IMailbox public mailbox;
+    IInterchainGasPaymaster public igp;
     /**
      * @dev Struct to store product details.
      * @param productPicCID The CID of the uploaded image content of the product using web3.storage.
@@ -121,11 +122,8 @@ contract MegaMask {
     ) {
         interchainGasPaymasterAddress = _interchainGasPaymasterAddress;
         mailboxAddress = _mailboxAddress;
+        _updateInstances(); // update the instances upon deployment
     }
-
-    IMailbox mailbox = IMailbox(mailboxAddress);
-    IInterchainGasPaymaster igp =
-        IInterchainGasPaymaster(interchainGasPaymasterAddress);
 
     //-----------------------------
     //DEFINE SETTER FUNCTIONS
@@ -142,7 +140,7 @@ contract MegaMask {
         string memory _productPicCID,
         string memory _productName,
         string memory _price
-    ) public onlySmartAccount {
+    ) public payable onlySmartAccount {
         //create a new product
         Product memory newProduct = Product({
             productPicCID: _productPicCID,
@@ -161,13 +159,6 @@ contract MegaMask {
             _price,
             smartAccountToInventory[msg.sender].length - 1
         );
-
-        //call internal function to propagate product details to different chains
-        _propagateProductDetailsToDifferentChains(
-            _productPicCID,
-            _productName,
-            _price
-        );
     }
 
     //setter function to add multiple products to inventory
@@ -175,7 +166,7 @@ contract MegaMask {
         string[] memory _productPicCIDs,
         string[] memory _productNames,
         string[] memory _prices
-    ) external onlySmartAccount {
+    ) external payable onlySmartAccount {
         //loop through the product details and add them to the inventory
         for (uint256 i = 0; i < _productPicCIDs.length; i++) {
             addProduct(_productPicCIDs[i], _productNames[i], _prices[i]);
@@ -186,23 +177,53 @@ contract MegaMask {
     //DEFINE GETTER FUNCTIONS
     //-----------------------------
 
-    //-----------------------------
+    //-------------------------
     //DEFINE INTERNAL FUNCTIONS
-    //-----------------------------
+    //-------------------------
+    function _updateInstances() internal {
+        mailbox = IMailbox(mailboxAddress);
+        igp = IInterchainGasPaymaster(interchainGasPaymasterAddress);
+    }
+
+    //-------------------------
+    //DEFINE EXTERNAL FUNCTIONS
+    //-------------------------
+    //change the gas amount
+    function changeGasAmount(uint256 _gasAmount) external {
+        gasAmount = _gasAmount;
+    }
+
+    //change the interchain gas paymaster address
+    function changeInterchainGasPaymasterAddress(
+        address _interchainGasPaymasterAddress
+    ) external {
+        interchainGasPaymasterAddress = _interchainGasPaymasterAddress;
+        emit InterchainGasPaymasterUpdated(_interchainGasPaymasterAddress);
+        _updateInstances(); // Update instances after changing the address
+    }
+
+    //change the mailbox address
+    function changeMailboxAddress(address _mailboxAddress) external {
+        mailboxAddress = _mailboxAddress;
+        emit MailboxUpdated(_mailboxAddress);
+        _updateInstances(); // Update instances after changing the address
+    }
+
     //setter function to update the chain ids to propagate to
-    function _updateChainIdsToPropagateTo(
+    function updateChainIdsToPropagateTo(
         uint256[] memory _chainIdsToPropagateTo
     ) external {
         chainIdsToPropagateTo = _chainIdsToPropagateTo;
     }
 
     //setter function to propagate product details to different chains
-    function _propagateProductDetailsToDifferentChains(
+    function propagateProductDetailsToDifferentChains(
+        uint256 _originChainId,
         string memory _productPicCID,
         string memory _productName,
         string memory _price
-    ) internal {
-        //loop through the chain ids to propagate to
+    ) public payable {
+        //loop through the chain ids to propagate to, except the origin chain
         for (uint256 i = 0; i < chainIdsToPropagateTo.length; i++) {
             //emit event and also mention which index the product is added to
             emit ProductPropagatedToDifferentChains(
@@ -215,41 +236,29 @@ contract MegaMask {
         }
     }
 
-    //change the gas amount
-    function _changeGasAmount(uint256 _gasAmount) external {
-        gasAmount = _gasAmount;
-    }
-
-    //change the interchain gas paymaster address
-    function changeInterchainGasPaymasterAddress(
-        address _interchainGasPaymasterAddress
-    ) external {
-        interchainGasPaymasterAddress = _interchainGasPaymasterAddress;
-        emit InterchainGasPaymasterUpdated(_interchainGasPaymasterAddress);
-    }
-
-    //change the mailbox address
-    function changeMailboxAddress(address _mailboxAddress) external {
-        mailboxAddress = _mailboxAddress;
-        emit MailboxUpdated(_mailboxAddress);
-    }
-
     //this is used to call AttestRecipient contract on Arbitrum Goerli
-    function _sendInterchainCall(
-        uint32 destinationDomain,
+    function sendInterchainCall(
+        uint32 _destinationDomain,
         bytes32 _recipientAddress,
         bytes calldata _messageBody
-    ) external payable {
+    ) public payable {
+        _updateInstances(); // Ensure instances are up-to-date
         bytes32 messageId = mailbox.dispatch(
-            destinationDomain,
+            _destinationDomain,
             _recipientAddress,
             _messageBody
         );
-        igp.payForGas{value: msg.value}(
+
+        // Get the required payment from the IGP.
+        uint256 quote = igp.quoteGasPayment(_destinationDomain, gasAmount);
+
+        igp.payForGas{value: quote}(
             messageId, // The ID of the message that was just dispatched
-            destinationDomain, // The destination domain of the message
+            _destinationDomain, // The destination domain of the message
             gasAmount, // 550k gas to use in the recipient's handle function
-            msg.sender // refunds go to msg.sender, who paid the msg.value
+            address(this) // refunds go to msg.sender, who paid the msg.value
         );
     }
+
+    receive() external payable {}
 }

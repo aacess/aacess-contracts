@@ -1,0 +1,272 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_origin",
+          "type": "uint32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_sender",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_message",
+          "type": "bytes"
+        }
+      ],
+      "name": "handle",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "handle(uint32,bytes32,bytes)": "56d5d475"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_origin\",\"type\":\"uint32\"},{\"internalType\":\"bytes32\",\"name\":\"_sender\",\"type\":\"bytes32\"},{\"internalType\":\"bytes\",\"name\":\"_message\",\"type\":\"bytes\"}],\"name\":\"handle\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/interfaces/IMessageRecipient.sol\":\"IMessageRecipient\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@openzeppelin/=lib/openzeppelin-contracts/\",\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/\"]},\"sources\":{\"src/interfaces/IMessageRecipient.sol\":{\"keccak256\":\"0x250fabee11ab22fc3cb14ba0ff86410f681e621c43590c24ecbcf48fea8c7e70\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://a548c77a5288e4c8c0433aa8c2c5de53a8e04bc9beefdd181cac934022ea263d\",\"dweb:/ipfs/QmezUeASavGbJJjcZmgcQrnpVVYT1QWFay44ND6hYofHh9\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.19+commit.7dd6d404"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "uint32",
+              "name": "_origin",
+              "type": "uint32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "_sender",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes",
+              "name": "_message",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "handle"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@openzeppelin/=lib/openzeppelin-contracts/",
+        ":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+        ":forge-std/=lib/forge-std/src/",
+        ":openzeppelin-contracts/=lib/openzeppelin-contracts/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/interfaces/IMessageRecipient.sol": "IMessageRecipient"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "src/interfaces/IMessageRecipient.sol": {
+        "keccak256": "0x250fabee11ab22fc3cb14ba0ff86410f681e621c43590c24ecbcf48fea8c7e70",
+        "urls": [
+          "bzz-raw://a548c77a5288e4c8c0433aa8c2c5de53a8e04bc9beefdd181cac934022ea263d",
+          "dweb:/ipfs/QmezUeASavGbJJjcZmgcQrnpVVYT1QWFay44ND6hYofHh9"
+        ],
+        "license": "MIT OR Apache-2.0"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/interfaces/IMessageRecipient.sol",
+    "id": 41635,
+    "exportedSymbols": {
+      "IMessageRecipient": [
+        41634
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "46:177:26",
+    "nodes": [
+      {
+        "id": 41624,
+        "nodeType": "PragmaDirective",
+        "src": "46:25:26",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          ">=",
+          "0.6",
+          ".11"
+        ]
+      },
+      {
+        "id": 41634,
+        "nodeType": "ContractDefinition",
+        "src": "73:149:26",
+        "nodes": [
+          {
+            "id": 41633,
+            "nodeType": "FunctionDefinition",
+            "src": "107:113:26",
+            "nodes": [],
+            "functionSelector": "56d5d475",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "handle",
+            "nameLocation": "116:6:26",
+            "parameters": {
+              "id": 41631,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 41626,
+                  "mutability": "mutable",
+                  "name": "_origin",
+                  "nameLocation": "139:7:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 41633,
+                  "src": "132:14:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 41625,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "132:6:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 41628,
+                  "mutability": "mutable",
+                  "name": "_sender",
+                  "nameLocation": "164:7:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 41633,
+                  "src": "156:15:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 41627,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "156:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 41630,
+                  "mutability": "mutable",
+                  "name": "_message",
+                  "nameLocation": "196:8:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 41633,
+                  "src": "181:23:26",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 41629,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "181:5:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "122:88:26"
+            },
+            "returnParameters": {
+              "id": 41632,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "219:0:26"
+            },
+            "scope": 41634,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IMessageRecipient",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          41634
+        ],
+        "name": "IMessageRecipient",
+        "nameLocation": "83:17:26",
+        "scope": 41635,
+        "usedErrors": []
+      }
+    ],
+    "license": "MIT OR Apache-2.0"
+  },
+  "id": 26
+}

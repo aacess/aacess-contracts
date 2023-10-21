@@ -1,0 +1,841 @@
+{
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "uid",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "registerer",
+          "type": "address"
+        }
+      ],
+      "name": "Registered",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "uid",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getSchema",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bytes32",
+              "name": "uid",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "contract ISchemaResolver",
+              "name": "resolver",
+              "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "revocable",
+              "type": "bool"
+            },
+            {
+              "internalType": "string",
+              "name": "schema",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct SchemaRecord",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "schema",
+          "type": "string"
+        },
+        {
+          "internalType": "contract ISchemaResolver",
+          "name": "resolver",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "revocable",
+          "type": "bool"
+        }
+      ],
+      "name": "register",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "getSchema(bytes32)": "a2ea7c6e",
+    "register(string,address,bool)": "60d7a278"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"uid\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"registerer\",\"type\":\"address\"}],\"name\":\"Registered\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"uid\",\"type\":\"bytes32\"}],\"name\":\"getSchema\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"uid\",\"type\":\"bytes32\"},{\"internalType\":\"contract ISchemaResolver\",\"name\":\"resolver\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"revocable\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"schema\",\"type\":\"string\"}],\"internalType\":\"struct SchemaRecord\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"schema\",\"type\":\"string\"},{\"internalType\":\"contract ISchemaResolver\",\"name\":\"resolver\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"revocable\",\"type\":\"bool\"}],\"name\":\"register\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"events\":{\"Registered(bytes32,address)\":{\"params\":{\"registerer\":\"The address of the account used to register the schema.\",\"uid\":\"The schema UID.\"}}},\"kind\":\"dev\",\"methods\":{\"getSchema(bytes32)\":{\"params\":{\"uid\":\"The UID of the schema to retrieve.\"},\"returns\":{\"_0\":\"The schema data members.\"}},\"register(string,address,bool)\":{\"params\":{\"resolver\":\"An optional schema resolver.\",\"revocable\":\"Whether the schema allows revocations explicitly.\",\"schema\":\"The schema data schema.\"},\"returns\":{\"_0\":\"The UID of the new schema.\"}}},\"title\":\"ISchemaRegistry\",\"version\":1},\"userdoc\":{\"events\":{\"Registered(bytes32,address)\":{\"notice\":\"Emitted when a new schema has been registered\"}},\"kind\":\"user\",\"methods\":{\"getSchema(bytes32)\":{\"notice\":\"Returns an existing schema by UID\"},\"register(string,address,bool)\":{\"notice\":\"Submits and reserves a new schema\"}},\"notice\":\"The global schema registry interface.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/interfaces/ISchemaRegistry.sol\":\"ISchemaRegistry\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@openzeppelin/=lib/openzeppelin-contracts/\",\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/\"]},\"sources\":{\"src/Common.sol\":{\"keccak256\":\"0x2897537fc662aa2051b945fcd640ce9aaf6c8abfd0fa4afdf4a9310f9bda5d13\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d9eb58d5dff940a4c090f40c23abbe3ff647e9efa2987f4a61733138c8d9c8a6\",\"dweb:/ipfs/QmYjcn9XYNt8VLxrBkTAFDD2xjmkvzmBPB9EtifTCyLW8D\"]},\"src/interfaces/ISchemaRegistry.sol\":{\"keccak256\":\"0x2f907f6b9e49344bf3c0345a3db63bb51a40d1f80429a823d937543482bfd8d9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3359574b6d0d6264b05eaf514b82c315de1ac421f83858553db785f43e36ae03\",\"dweb:/ipfs/QmYDSsdoEBJc146MSvqb7iVaQxeiHEBPfZZBLTghHy1M5S\"]},\"src/interfaces/ISchemaResolver.sol\":{\"keccak256\":\"0xfe0f84689ed7994177fbffff6234831b96d4553e1cf4f0d036994d331335b60f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://358428f36fbf5e794c704a3558d0bad450162d4125dfe5b3f17c0088a3173fd0\",\"dweb:/ipfs/QmTE1B8QHy26k6sZjdnceVF5tBZ25ttoLXuriWJKBcSqtF\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.19+commit.7dd6d404"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "uid",
+              "type": "bytes32",
+              "indexed": true
+            },
+            {
+              "internalType": "address",
+              "name": "registerer",
+              "type": "address",
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "Registered",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "uid",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "getSchema",
+          "outputs": [
+            {
+              "internalType": "struct SchemaRecord",
+              "name": "",
+              "type": "tuple",
+              "components": [
+                {
+                  "internalType": "bytes32",
+                  "name": "uid",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "contract ISchemaResolver",
+                  "name": "resolver",
+                  "type": "address"
+                },
+                {
+                  "internalType": "bool",
+                  "name": "revocable",
+                  "type": "bool"
+                },
+                {
+                  "internalType": "string",
+                  "name": "schema",
+                  "type": "string"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "string",
+              "name": "schema",
+              "type": "string"
+            },
+            {
+              "internalType": "contract ISchemaResolver",
+              "name": "resolver",
+              "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "revocable",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "register",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {
+          "getSchema(bytes32)": {
+            "params": {
+              "uid": "The UID of the schema to retrieve."
+            },
+            "returns": {
+              "_0": "The schema data members."
+            }
+          },
+          "register(string,address,bool)": {
+            "params": {
+              "resolver": "An optional schema resolver.",
+              "revocable": "Whether the schema allows revocations explicitly.",
+              "schema": "The schema data schema."
+            },
+            "returns": {
+              "_0": "The UID of the new schema."
+            }
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {
+          "getSchema(bytes32)": {
+            "notice": "Returns an existing schema by UID"
+          },
+          "register(string,address,bool)": {
+            "notice": "Submits and reserves a new schema"
+          }
+        },
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@openzeppelin/=lib/openzeppelin-contracts/",
+        ":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+        ":forge-std/=lib/forge-std/src/",
+        ":openzeppelin-contracts/=lib/openzeppelin-contracts/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/interfaces/ISchemaRegistry.sol": "ISchemaRegistry"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "src/Common.sol": {
+        "keccak256": "0x2897537fc662aa2051b945fcd640ce9aaf6c8abfd0fa4afdf4a9310f9bda5d13",
+        "urls": [
+          "bzz-raw://d9eb58d5dff940a4c090f40c23abbe3ff647e9efa2987f4a61733138c8d9c8a6",
+          "dweb:/ipfs/QmYjcn9XYNt8VLxrBkTAFDD2xjmkvzmBPB9EtifTCyLW8D"
+        ],
+        "license": "MIT"
+      },
+      "src/interfaces/ISchemaRegistry.sol": {
+        "keccak256": "0x2f907f6b9e49344bf3c0345a3db63bb51a40d1f80429a823d937543482bfd8d9",
+        "urls": [
+          "bzz-raw://3359574b6d0d6264b05eaf514b82c315de1ac421f83858553db785f43e36ae03",
+          "dweb:/ipfs/QmYDSsdoEBJc146MSvqb7iVaQxeiHEBPfZZBLTghHy1M5S"
+        ],
+        "license": "MIT"
+      },
+      "src/interfaces/ISchemaResolver.sol": {
+        "keccak256": "0xfe0f84689ed7994177fbffff6234831b96d4553e1cf4f0d036994d331335b60f",
+        "urls": [
+          "bzz-raw://358428f36fbf5e794c704a3558d0bad450162d4125dfe5b3f17c0088a3173fd0",
+          "dweb:/ipfs/QmTE1B8QHy26k6sZjdnceVF5tBZ25ttoLXuriWJKBcSqtF"
+        ],
+        "license": "MIT"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/interfaces/ISchemaRegistry.sol",
+    "id": 41680,
+    "exportedSymbols": {
+      "ISchemaRegistry": [
+        41679
+      ],
+      "ISchemaResolver": [
+        41735
+      ],
+      "SchemaRecord": [
+        41648
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "33:1425:27",
+    "nodes": [
+      {
+        "id": 41636,
+        "nodeType": "PragmaDirective",
+        "src": "33:23:27",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 41638,
+        "nodeType": "ImportDirective",
+        "src": "58:54:27",
+        "nodes": [],
+        "absolutePath": "src/interfaces/ISchemaResolver.sol",
+        "file": "./ISchemaResolver.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 41680,
+        "sourceUnit": 41736,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 41637,
+              "name": "ISchemaResolver",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 41735,
+              "src": "66:15:27",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 41648,
+        "nodeType": "StructDefinition",
+        "src": "181:285:27",
+        "nodes": [],
+        "canonicalName": "SchemaRecord",
+        "members": [
+          {
+            "constant": false,
+            "id": 41640,
+            "mutability": "mutable",
+            "name": "uid",
+            "nameLocation": "215:3:27",
+            "nodeType": "VariableDeclaration",
+            "scope": 41648,
+            "src": "207:11:27",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes32",
+              "typeString": "bytes32"
+            },
+            "typeName": {
+              "id": 41639,
+              "name": "bytes32",
+              "nodeType": "ElementaryTypeName",
+              "src": "207:7:27",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes32",
+                "typeString": "bytes32"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 41643,
+            "mutability": "mutable",
+            "name": "resolver",
+            "nameLocation": "280:8:27",
+            "nodeType": "VariableDeclaration",
+            "scope": 41648,
+            "src": "264:24:27",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ISchemaResolver_$41735",
+              "typeString": "contract ISchemaResolver"
+            },
+            "typeName": {
+              "id": 41642,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 41641,
+                "name": "ISchemaResolver",
+                "nameLocations": [
+                  "264:15:27"
+                ],
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 41735,
+                "src": "264:15:27"
+              },
+              "referencedDeclaration": 41735,
+              "src": "264:15:27",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ISchemaResolver_$41735",
+                "typeString": "contract ISchemaResolver"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 41645,
+            "mutability": "mutable",
+            "name": "revocable",
+            "nameLocation": "328:9:27",
+            "nodeType": "VariableDeclaration",
+            "scope": 41648,
+            "src": "323:14:27",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bool",
+              "typeString": "bool"
+            },
+            "typeName": {
+              "id": 41644,
+              "name": "bool",
+              "nodeType": "ElementaryTypeName",
+              "src": "323:4:27",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 41647,
+            "mutability": "mutable",
+            "name": "schema",
+            "nameLocation": "403:6:27",
+            "nodeType": "VariableDeclaration",
+            "scope": 41648,
+            "src": "396:13:27",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_string_storage_ptr",
+              "typeString": "string"
+            },
+            "typeName": {
+              "id": 41646,
+              "name": "string",
+              "nodeType": "ElementaryTypeName",
+              "src": "396:6:27",
+              "typeDescriptions": {
+                "typeIdentifier": "t_string_storage_ptr",
+                "typeString": "string"
+              }
+            },
+            "visibility": "internal"
+          }
+        ],
+        "name": "SchemaRecord",
+        "nameLocation": "188:12:27",
+        "scope": 41680,
+        "visibility": "public"
+      },
+      {
+        "id": 41679,
+        "nodeType": "ContractDefinition",
+        "src": "545:912:27",
+        "nodes": [
+          {
+            "id": 41656,
+            "nodeType": "EventDefinition",
+            "src": "756:58:27",
+            "nodes": [],
+            "anonymous": false,
+            "documentation": {
+              "id": 41650,
+              "nodeType": "StructuredDocumentation",
+              "src": "577:174:27",
+              "text": "@notice Emitted when a new schema has been registered\n @param uid The schema UID.\n @param registerer The address of the account used to register the schema."
+            },
+            "eventSelector": "7d917fcbc9a29a9705ff9936ffa599500e4fd902e4486bae317414fe967b307c",
+            "name": "Registered",
+            "nameLocation": "762:10:27",
+            "parameters": {
+              "id": 41655,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 41652,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "uid",
+                  "nameLocation": "789:3:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 41656,
+                  "src": "773:19:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 41651,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "773:7:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 41654,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "registerer",
+                  "nameLocation": "802:10:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 41656,
+                  "src": "794:18:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 41653,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "794:7:27",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "772:41:27"
+            }
+          },
+          {
+            "id": 41669,
+            "nodeType": "FunctionDefinition",
+            "src": "1087:141:27",
+            "nodes": [],
+            "documentation": {
+              "id": 41657,
+              "nodeType": "StructuredDocumentation",
+              "src": "820:262:27",
+              "text": "@notice Submits and reserves a new schema\n @param schema The schema data schema.\n @param resolver An optional schema resolver.\n @param revocable Whether the schema allows revocations explicitly.\n @return The UID of the new schema."
+            },
+            "functionSelector": "60d7a278",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "register",
+            "nameLocation": "1096:8:27",
+            "parameters": {
+              "id": 41665,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 41659,
+                  "mutability": "mutable",
+                  "name": "schema",
+                  "nameLocation": "1130:6:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 41669,
+                  "src": "1114:22:27",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 41658,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1114:6:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 41662,
+                  "mutability": "mutable",
+                  "name": "resolver",
+                  "nameLocation": "1162:8:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 41669,
+                  "src": "1146:24:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISchemaResolver_$41735",
+                    "typeString": "contract ISchemaResolver"
+                  },
+                  "typeName": {
+                    "id": 41661,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 41660,
+                      "name": "ISchemaResolver",
+                      "nameLocations": [
+                        "1146:15:27"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 41735,
+                      "src": "1146:15:27"
+                    },
+                    "referencedDeclaration": 41735,
+                    "src": "1146:15:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISchemaResolver_$41735",
+                      "typeString": "contract ISchemaResolver"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 41664,
+                  "mutability": "mutable",
+                  "name": "revocable",
+                  "nameLocation": "1185:9:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 41669,
+                  "src": "1180:14:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 41663,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1180:4:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1104:96:27"
+            },
+            "returnParameters": {
+              "id": 41668,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 41667,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 41669,
+                  "src": "1219:7:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 41666,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1219:7:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1218:9:27"
+            },
+            "scope": 41679,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 41678,
+            "nodeType": "FunctionDefinition",
+            "src": "1379:76:27",
+            "nodes": [],
+            "documentation": {
+              "id": 41670,
+              "nodeType": "StructuredDocumentation",
+              "src": "1234:140:27",
+              "text": "@notice Returns an existing schema by UID\n @param uid The UID of the schema to retrieve.\n @return The schema data members."
+            },
+            "functionSelector": "a2ea7c6e",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getSchema",
+            "nameLocation": "1388:9:27",
+            "parameters": {
+              "id": 41673,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 41672,
+                  "mutability": "mutable",
+                  "name": "uid",
+                  "nameLocation": "1406:3:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 41678,
+                  "src": "1398:11:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 41671,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1398:7:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1397:13:27"
+            },
+            "returnParameters": {
+              "id": 41677,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 41676,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 41678,
+                  "src": "1434:19:27",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_SchemaRecord_$41648_memory_ptr",
+                    "typeString": "struct SchemaRecord"
+                  },
+                  "typeName": {
+                    "id": 41675,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 41674,
+                      "name": "SchemaRecord",
+                      "nameLocations": [
+                        "1434:12:27"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 41648,
+                      "src": "1434:12:27"
+                    },
+                    "referencedDeclaration": 41648,
+                    "src": "1434:12:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_SchemaRecord_$41648_storage_ptr",
+                      "typeString": "struct SchemaRecord"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1433:21:27"
+            },
+            "scope": 41679,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ISchemaRegistry",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 41649,
+          "nodeType": "StructuredDocumentation",
+          "src": "468:77:27",
+          "text": "@title ISchemaRegistry\n @notice The global schema registry interface."
+        },
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          41679
+        ],
+        "name": "ISchemaRegistry",
+        "nameLocation": "555:15:27",
+        "scope": 41680,
+        "usedErrors": []
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 27
+}
