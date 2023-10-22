@@ -4,6 +4,8 @@ pragma solidity ^0.8.17;
 //------------------------
 //IMPORT EXTERNAL PACKAGES
 //------------------------
+import "wormhole-solidity-sdk/interfaces/IWormholeRelayer.sol";
+import "wormhole-solidity-sdk/interfaces/IWormholeReceiver.sol";
 
 interface IEAS {
     /// @notice A struct representing the arguments of the attestation request.
