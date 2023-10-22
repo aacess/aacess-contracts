@@ -837,8 +837,8 @@
       }
     },
     "src/InvoiceResolver.sol": {
-      "lastModificationDate": 1697775123801,
-      "contentHash": "5d065ae7cf33c3be157651f5a46260ba",
+      "lastModificationDate": 1697928528107,
+      "contentHash": "6644db77142e8cef5e28192e05206957",
       "sourceName": "src/InvoiceResolver.sol",
       "solcConfig": {
         "settings": {
@@ -873,7 +873,7 @@
         "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
         "lib/openzeppelin-contracts/contracts/utils/math/SignedMath.sol",
         "src/Common.sol",
-        "src/MegaMask.sol",
+        "src/MegaMaskProduct.sol",
         "src/SchemaResolver.sol",
         "src/Semver.sol",
         "src/interfaces/IEAS.sol",
@@ -890,10 +890,104 @@
         }
       }
     },
-    "src/MegaMask.sol": {
-      "lastModificationDate": 1697905378643,
-      "contentHash": "16e343e2e9b4a6af579a208c5a4171cc",
-      "sourceName": "src/MegaMask.sol",
+    "src/MegaMaskAttest.sol": {
+      "lastModificationDate": 1697929769511,
+      "contentHash": "05c1637a3671d98bff1f09dac1504ef4",
+      "sourceName": "src/MegaMaskAttest.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "paris",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "src/Common.sol",
+        "src/interfaces/IEAS.sol",
+        "src/interfaces/IInterchainGasPaymaster.sol",
+        "src/interfaces/IInterchainSecurityModule.sol",
+        "src/interfaces/IMailbox.sol",
+        "src/interfaces/ISchemaRegistry.sol",
+        "src/interfaces/ISchemaResolver.sol"
+      ],
+      "versionRequirement": "^0.8.17",
+      "artifacts": {
+        "MegaMaskProduct": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttest.sol/MegaMaskProduct.json"
+        }
+      }
+    },
+    "src/MegaMaskAttestRecipient.sol": {
+      "lastModificationDate": 1697928998774,
+      "contentHash": "18c7baaa851304304ee60bad21a1162f",
+      "sourceName": "src/MegaMaskAttestRecipient.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "paris",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "src/interfaces/IInterchainSecurityModule.sol",
+        "src/interfaces/IMessageRecipient.sol"
+      ],
+      "versionRequirement": "^0.8.17",
+      "artifacts": {
+        "IMegaMaskProduct": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttestRecipient.sol/IMegaMaskProduct.json"
+        },
+        "MegaMaskProductRecipient": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttestRecipient.sol/MegaMaskProductRecipient.json"
+        }
+      }
+    },
+    "src/MegaMaskProduct.sol": {
+      "lastModificationDate": 1697929743354,
+      "contentHash": "8ab615abeff0c4e2ce8126a26e3de361",
+      "sourceName": "src/MegaMaskProduct.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -929,15 +1023,15 @@
       ],
       "versionRequirement": "^0.8.17",
       "artifacts": {
-        "MegaMask": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMask.sol/MegaMask.json"
+        "MegaMaskProduct": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskProduct.sol/MegaMaskProduct.json"
         }
       }
     },
-    "src/MegaMaskRecipient.sol": {
-      "lastModificationDate": 1697906178432,
-      "contentHash": "2ab6b8438df54bb08853be6e6e3e1501",
-      "sourceName": "src/MegaMaskRecipient.sol",
+    "src/MegaMaskProductRecipient.sol": {
+      "lastModificationDate": 1697918014716,
+      "contentHash": "18c7baaa851304304ee60bad21a1162f",
+      "sourceName": "src/MegaMaskProductRecipient.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -972,11 +1066,11 @@
       ],
       "versionRequirement": "^0.8.17",
       "artifacts": {
-        "IMegaMask": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskRecipient.sol/IMegaMask.json"
+        "IMegaMaskProduct": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskProductRecipient.sol/IMegaMaskProduct.json"
         },
-        "MegaMaskRecipient": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskRecipient.sol/MegaMaskRecipient.json"
+        "MegaMaskProductRecipient": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskProductRecipient.sol/MegaMaskProductRecipient.json"
         }
       }
     },
