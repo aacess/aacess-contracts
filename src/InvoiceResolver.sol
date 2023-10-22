@@ -6,7 +6,7 @@ import {SchemaResolver} from "./SchemaResolver.sol";
 
 import {IEAS, Attestation} from "./interfaces/IEAS.sol";
 
-import {MegaMask} from "./MegaMask.sol";
+import {MegaMaskProduct} from "./MegaMaskProduct.sol";
 
 /**
  * @title A sample schema resolver that checks whether the attestation is from a specific attester.
