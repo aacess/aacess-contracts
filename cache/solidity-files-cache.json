@@ -741,6 +741,95 @@
         }
       }
     },
+    "lib/wormhole-solidity-sdk/src/interfaces/IWormholeReceiver.sol": {
+      "lastModificationDate": 1697955244071,
+      "contentHash": "45470d92c4bc6d2fea60e2a719d6fad5",
+      "sourceName": "lib/wormhole-solidity-sdk/src/interfaces/IWormholeReceiver.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "paris",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.0",
+      "artifacts": {
+        "IWormholeReceiver": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "IWormholeReceiver.sol/IWormholeReceiver.json"
+        }
+      }
+    },
+    "lib/wormhole-solidity-sdk/src/interfaces/IWormholeRelayer.sol": {
+      "lastModificationDate": 1697955244071,
+      "contentHash": "f0c31126b4d7df3b1f7de5933a2d8755",
+      "sourceName": "lib/wormhole-solidity-sdk/src/interfaces/IWormholeRelayer.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "paris",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.0",
+      "artifacts": {
+        "IWormholeRelayer": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "IWormholeRelayer.sol/IWormholeRelayer.json"
+        },
+        "IWormholeRelayerBase": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "IWormholeRelayer.sol/IWormholeRelayerBase.json"
+        },
+        "IWormholeRelayerDelivery": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "IWormholeRelayer.sol/IWormholeRelayerDelivery.json"
+        },
+        "IWormholeRelayerSend": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "IWormholeRelayer.sol/IWormholeRelayerSend.json"
+        }
+      }
+    },
     "script/MegaMask.s.sol": {
       "lastModificationDate": 1697747145030,
       "contentHash": "bb48cd775fb98dd2260d22b7902f3f20",
@@ -891,8 +980,8 @@
       }
     },
     "src/MegaMaskAttest.sol": {
-      "lastModificationDate": 1697929769511,
-      "contentHash": "05c1637a3671d98bff1f09dac1504ef4",
+      "lastModificationDate": 1697957136919,
+      "contentHash": "9259eaaf8d2a1bee94192955a55f70a7",
       "sourceName": "src/MegaMaskAttest.sol",
       "solcConfig": {
         "settings": {
@@ -923,64 +1012,16 @@
         }
       },
       "imports": [
-        "src/Common.sol",
-        "src/interfaces/IEAS.sol",
-        "src/interfaces/IInterchainGasPaymaster.sol",
-        "src/interfaces/IInterchainSecurityModule.sol",
-        "src/interfaces/IMailbox.sol",
-        "src/interfaces/ISchemaRegistry.sol",
-        "src/interfaces/ISchemaResolver.sol"
+        "lib/wormhole-solidity-sdk/src/interfaces/IWormholeReceiver.sol",
+        "lib/wormhole-solidity-sdk/src/interfaces/IWormholeRelayer.sol"
       ],
       "versionRequirement": "^0.8.17",
       "artifacts": {
-        "MegaMaskProduct": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttest.sol/MegaMaskProduct.json"
-        }
-      }
-    },
-    "src/MegaMaskAttestRecipient.sol": {
-      "lastModificationDate": 1697928998774,
-      "contentHash": "18c7baaa851304304ee60bad21a1162f",
-      "sourceName": "src/MegaMaskAttestRecipient.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "paris",
-          "libraries": {}
-        }
-      },
-      "imports": [
-        "src/interfaces/IInterchainSecurityModule.sol",
-        "src/interfaces/IMessageRecipient.sol"
-      ],
-      "versionRequirement": "^0.8.17",
-      "artifacts": {
-        "IMegaMaskProduct": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttestRecipient.sol/IMegaMaskProduct.json"
+        "IEAS": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttest.sol/IEAS.json"
         },
-        "MegaMaskProductRecipient": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttestRecipient.sol/MegaMaskProductRecipient.json"
+        "MegaMaskAttest": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttest.sol/MegaMaskAttest.json"
         }
       }
     },
