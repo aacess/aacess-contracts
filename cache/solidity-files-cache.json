@@ -979,10 +979,58 @@
         }
       }
     },
-    "src/MegaMaskAttest.sol": {
-      "lastModificationDate": 1697957136919,
-      "contentHash": "9259eaaf8d2a1bee94192955a55f70a7",
-      "sourceName": "src/MegaMaskAttest.sol",
+    "src/MegaMaskAttestHyperlane.sol": {
+      "lastModificationDate": 1697972980533,
+      "contentHash": "60ab7da0d3a0bb3e3a13e6edfd3047b1",
+      "sourceName": "src/MegaMaskAttestHyperlane.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "paris",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "src/interfaces/IInterchainGasPaymaster.sol",
+        "src/interfaces/IInterchainSecurityModule.sol",
+        "src/interfaces/IMailbox.sol",
+        "src/interfaces/IMessageRecipient.sol"
+      ],
+      "versionRequirement": "^0.8.17",
+      "artifacts": {
+        "IEAS": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttestHyperlane.sol/IEAS.json"
+        },
+        "MegaMaskAttest": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttestHyperlane.sol/MegaMaskAttest.json"
+        }
+      }
+    },
+    "src/MegaMaskAttestWormhole.sol": {
+      "lastModificationDate": 1697968561167,
+      "contentHash": "876b4a2f125b8ec1e6448c5d31e080ee",
+      "sourceName": "src/MegaMaskAttestWormhole.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -1018,10 +1066,10 @@
       "versionRequirement": "^0.8.17",
       "artifacts": {
         "IEAS": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttest.sol/IEAS.json"
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttestWormhole.sol/IEAS.json"
         },
         "MegaMaskAttest": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttest.sol/MegaMaskAttest.json"
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttestWormhole.sol/MegaMaskAttest.json"
         }
       }
     },
