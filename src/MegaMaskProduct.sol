@@ -123,8 +123,8 @@ contract MegaMaskProduct {
 
     //-----------------------------
     //DEFINE SETTER FUNCTIONS
-    //TODO: function to post product details to different chains at once (hyperlane)
-    //TODO: function to fetch product details from current chain, getProduct(address) -> Product[] (hyperlane)
+    //TODO: function to post product details to different chains at once (hyperlane) DONE
+    //TODO: function to fetch product details from current chain, getProduct(address) -> Product[] (hyperlane) DONE
     //TODO: post attestation as merchant to attestation contract in Sepolia (wormhole)
     //TODO: resolver contract to check that a merchant attestaion exists in Sepolia
     //TODO: function to make an attestation that bill paid (wormhole)
