@@ -35,7 +35,7 @@ interface IEAS {
  * @title MegaMask
  * @dev A smart contract for managing product inventory and attestation on different chains.
  */
-contract MegaMaskAttest is IEAS, IMessageRecipient {
+contract MegaMaskAttestHyperlane is IEAS, IMessageRecipient {
     //-----------------------------
     //DEFINE VARIABLES & CONSTANTS
     //-----------------------------

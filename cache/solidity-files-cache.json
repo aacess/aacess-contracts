@@ -12,7 +12,7 @@
   },
   "files": {
     "lib/forge-std/src/Base.sol": {
-      "lastModificationDate": 1697747134716,
+      "lastModificationDate": 1697928322090,
       "contentHash": "ee13c050b1914464f1d3f90cde90204b",
       "sourceName": "lib/forge-std/src/Base.sol",
       "solcConfig": {
@@ -61,7 +61,7 @@
       }
     },
     "lib/forge-std/src/Script.sol": {
-      "lastModificationDate": 1697747134716,
+      "lastModificationDate": 1697928322090,
       "contentHash": "ba325c778a7da8a21c2136aa32763c14",
       "sourceName": "lib/forge-std/src/Script.sol",
       "solcConfig": {
@@ -115,7 +115,7 @@
       }
     },
     "lib/forge-std/src/StdChains.sol": {
-      "lastModificationDate": 1697747134716,
+      "lastModificationDate": 1697928322090,
       "contentHash": "b0324b2e5a11948f852032aa293b3a05",
       "sourceName": "lib/forge-std/src/StdChains.sol",
       "solcConfig": {
@@ -157,7 +157,7 @@
       }
     },
     "lib/forge-std/src/StdCheats.sol": {
-      "lastModificationDate": 1697747134716,
+      "lastModificationDate": 1697928322090,
       "contentHash": "d984e2c76dae07bac1e292af2a5d4fd1",
       "sourceName": "lib/forge-std/src/StdCheats.sol",
       "solcConfig": {
@@ -204,7 +204,7 @@
       }
     },
     "lib/forge-std/src/StdJson.sol": {
-      "lastModificationDate": 1697747134718,
+      "lastModificationDate": 1697928322090,
       "contentHash": "a341308627b7eeab7589534daad58186",
       "sourceName": "lib/forge-std/src/StdJson.sol",
       "solcConfig": {
@@ -246,7 +246,7 @@
       }
     },
     "lib/forge-std/src/StdMath.sol": {
-      "lastModificationDate": 1697747134718,
+      "lastModificationDate": 1697928322090,
       "contentHash": "9da8f453eba6bb98f3d75bc6822bfb29",
       "sourceName": "lib/forge-std/src/StdMath.sol",
       "solcConfig": {
@@ -286,7 +286,7 @@
       }
     },
     "lib/forge-std/src/StdStorage.sol": {
-      "lastModificationDate": 1697747134718,
+      "lastModificationDate": 1697928322091,
       "contentHash": "abd6f3379e6e2a7979b18abc21aea0c1",
       "sourceName": "lib/forge-std/src/StdStorage.sol",
       "solcConfig": {
@@ -331,7 +331,7 @@
       }
     },
     "lib/forge-std/src/StdStyle.sol": {
-      "lastModificationDate": 1697747134718,
+      "lastModificationDate": 1697928322091,
       "contentHash": "6281165a12aa639705c691fccefd855e",
       "sourceName": "lib/forge-std/src/StdStyle.sol",
       "solcConfig": {
@@ -373,7 +373,7 @@
       }
     },
     "lib/forge-std/src/StdUtils.sol": {
-      "lastModificationDate": 1697747134719,
+      "lastModificationDate": 1697928322091,
       "contentHash": "3ce83748fd76644688f916c9cced545b",
       "sourceName": "lib/forge-std/src/StdUtils.sol",
       "solcConfig": {
@@ -416,7 +416,7 @@
       }
     },
     "lib/forge-std/src/Vm.sol": {
-      "lastModificationDate": 1697747134720,
+      "lastModificationDate": 1697928322091,
       "contentHash": "eff2556a384c025f56150fb3f78de858",
       "sourceName": "lib/forge-std/src/Vm.sol",
       "solcConfig": {
@@ -459,7 +459,7 @@
       }
     },
     "lib/forge-std/src/console.sol": {
-      "lastModificationDate": 1697747134721,
+      "lastModificationDate": 1697928322091,
       "contentHash": "100b8a33b917da1147740d7ab8b0ded3",
       "sourceName": "lib/forge-std/src/console.sol",
       "solcConfig": {
@@ -499,7 +499,7 @@
       }
     },
     "lib/forge-std/src/console2.sol": {
-      "lastModificationDate": 1697747134723,
+      "lastModificationDate": 1697928322091,
       "contentHash": "491ca717c1915995e78cc361485a3067",
       "sourceName": "lib/forge-std/src/console2.sol",
       "solcConfig": {
@@ -539,7 +539,7 @@
       }
     },
     "lib/forge-std/src/interfaces/IMulticall3.sol": {
-      "lastModificationDate": 1697747134728,
+      "lastModificationDate": 1697928322092,
       "contentHash": "7b131ca1ca32ef6378b7b9ad5488b901",
       "sourceName": "lib/forge-std/src/interfaces/IMulticall3.sol",
       "solcConfig": {
@@ -579,7 +579,7 @@
       }
     },
     "lib/forge-std/src/safeconsole.sol": {
-      "lastModificationDate": 1697747134729,
+      "lastModificationDate": 1697928322092,
       "contentHash": "ac3b1bf5a444db5db3656021830258a8",
       "sourceName": "lib/forge-std/src/safeconsole.sol",
       "solcConfig": {
@@ -619,7 +619,7 @@
       }
     },
     "lib/openzeppelin-contracts/contracts/utils/Strings.sol": {
-      "lastModificationDate": 1697748062324,
+      "lastModificationDate": 1697928487368,
       "contentHash": "d6dee8024ccc60e9dff6376b20929c72",
       "sourceName": "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
       "solcConfig": {
@@ -662,7 +662,7 @@
       }
     },
     "lib/openzeppelin-contracts/contracts/utils/math/Math.sol": {
-      "lastModificationDate": 1697748079503,
+      "lastModificationDate": 1697928505637,
       "contentHash": "d9b5aac43f10d260fdb984f7e505e606",
       "sourceName": "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
       "solcConfig": {
@@ -702,7 +702,7 @@
       }
     },
     "lib/openzeppelin-contracts/contracts/utils/math/SignedMath.sol": {
-      "lastModificationDate": 1697748082760,
+      "lastModificationDate": 1697928495196,
       "contentHash": "abdcb20f5a96af0612649ce39b29f148",
       "sourceName": "lib/openzeppelin-contracts/contracts/utils/math/SignedMath.sol",
       "solcConfig": {
@@ -830,10 +830,10 @@
         }
       }
     },
-    "script/MegaMask.s.sol": {
-      "lastModificationDate": 1697747145030,
-      "contentHash": "bb48cd775fb98dd2260d22b7902f3f20",
-      "sourceName": "script/MegaMask.s.sol",
+    "script/Deploy.s.sol": {
+      "lastModificationDate": 1697985569234,
+      "contentHash": "558f7ff355cf64eda61884237833c8b6",
+      "sourceName": "script/Deploy.s.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -876,17 +876,27 @@
         "lib/forge-std/src/console.sol",
         "lib/forge-std/src/console2.sol",
         "lib/forge-std/src/interfaces/IMulticall3.sol",
-        "lib/forge-std/src/safeconsole.sol"
+        "lib/forge-std/src/safeconsole.sol",
+        "lib/wormhole-solidity-sdk/src/interfaces/IWormholeReceiver.sol",
+        "lib/wormhole-solidity-sdk/src/interfaces/IWormholeRelayer.sol",
+        "src/MegaMaskAttestHyperlane.sol",
+        "src/MegaMaskAttestWormhole.sol",
+        "src/MegaMaskProduct.sol",
+        "src/MegaMaskProductRecipient.sol",
+        "src/interfaces/IInterchainGasPaymaster.sol",
+        "src/interfaces/IInterchainSecurityModule.sol",
+        "src/interfaces/IMailbox.sol",
+        "src/interfaces/IMessageRecipient.sol"
       ],
       "versionRequirement": "^0.8.13",
       "artifacts": {
         "Deploy": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMask.s.sol/Deploy.json"
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "Deploy.s.sol/Deploy.json"
         }
       }
     },
     "src/Common.sol": {
-      "lastModificationDate": 1697747360832,
+      "lastModificationDate": 1697906419900,
       "contentHash": "90b2c049d5634ea93faf035b0c53a9cc",
       "sourceName": "src/Common.sol",
       "solcConfig": {
@@ -926,8 +936,8 @@
       }
     },
     "src/InvoiceResolver.sol": {
-      "lastModificationDate": 1697928528107,
-      "contentHash": "6644db77142e8cef5e28192e05206957",
+      "lastModificationDate": 1697982049762,
+      "contentHash": "253d5b763102e429a757de1508fb75dc",
       "sourceName": "src/InvoiceResolver.sol",
       "solcConfig": {
         "settings": {
@@ -980,8 +990,8 @@
       }
     },
     "src/MegaMaskAttestHyperlane.sol": {
-      "lastModificationDate": 1697972980533,
-      "contentHash": "60ab7da0d3a0bb3e3a13e6edfd3047b1",
+      "lastModificationDate": 1697982276524,
+      "contentHash": "a2d3c4de614afafaebe0013538169bd7",
       "sourceName": "src/MegaMaskAttestHyperlane.sol",
       "solcConfig": {
         "settings": {
@@ -1022,14 +1032,14 @@
         "IEAS": {
           "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttestHyperlane.sol/IEAS.json"
         },
-        "MegaMaskAttest": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttestHyperlane.sol/MegaMaskAttest.json"
+        "MegaMaskAttestHyperlane": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttestHyperlane.sol/MegaMaskAttestHyperlane.json"
         }
       }
     },
     "src/MegaMaskAttestWormhole.sol": {
-      "lastModificationDate": 1697968561167,
-      "contentHash": "876b4a2f125b8ec1e6448c5d31e080ee",
+      "lastModificationDate": 1697982283485,
+      "contentHash": "e382973dea7a461b5e25181757c25aab",
       "sourceName": "src/MegaMaskAttestWormhole.sol",
       "solcConfig": {
         "settings": {
@@ -1068,14 +1078,14 @@
         "IEAS": {
           "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttestWormhole.sol/IEAS.json"
         },
-        "MegaMaskAttest": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttestWormhole.sol/MegaMaskAttest.json"
+        "MegaMaskAttestWormhole": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "MegaMaskAttestWormhole.sol/MegaMaskAttestWormhole.json"
         }
       }
     },
     "src/MegaMaskProduct.sol": {
-      "lastModificationDate": 1697929743354,
-      "contentHash": "8ab615abeff0c4e2ce8126a26e3de361",
+      "lastModificationDate": 1697982489227,
+      "contentHash": "7bbddf9cd8b2dc2dc709bae287c2e574",
       "sourceName": "src/MegaMaskProduct.sol",
       "solcConfig": {
         "settings": {
@@ -1118,7 +1128,7 @@
       }
     },
     "src/MegaMaskProductRecipient.sol": {
-      "lastModificationDate": 1697918014716,
+      "lastModificationDate": 1697968598122,
       "contentHash": "18c7baaa851304304ee60bad21a1162f",
       "sourceName": "src/MegaMaskProductRecipient.sol",
       "solcConfig": {
@@ -1164,7 +1174,7 @@
       }
     },
     "src/SchemaResolver.sol": {
-      "lastModificationDate": 1697747329924,
+      "lastModificationDate": 1697982016392,
       "contentHash": "3c75016d769933f4124d53b3f234adc6",
       "sourceName": "src/SchemaResolver.sol",
       "solcConfig": {
@@ -1213,7 +1223,7 @@
       }
     },
     "src/Semver.sol": {
-      "lastModificationDate": 1697747394922,
+      "lastModificationDate": 1697906419900,
       "contentHash": "bace63bc2be48b633a9f2c21c82562cd",
       "sourceName": "src/Semver.sol",
       "solcConfig": {
@@ -1257,7 +1267,7 @@
       }
     },
     "src/interfaces/IEAS.sol": {
-      "lastModificationDate": 1697747455212,
+      "lastModificationDate": 1697906419900,
       "contentHash": "e41d60754ad71d81722e96425c915f6c",
       "sourceName": "src/interfaces/IEAS.sol",
       "solcConfig": {
@@ -1301,7 +1311,7 @@
       }
     },
     "src/interfaces/IInterchainGasPaymaster.sol": {
-      "lastModificationDate": 1697747455215,
+      "lastModificationDate": 1697906419900,
       "contentHash": "92512917df8a9ead7f7bb440f17f30eb",
       "sourceName": "src/interfaces/IInterchainGasPaymaster.sol",
       "solcConfig": {
@@ -1341,7 +1351,7 @@
       }
     },
     "src/interfaces/IInterchainSecurityModule.sol": {
-      "lastModificationDate": 1697747455216,
+      "lastModificationDate": 1697906419900,
       "contentHash": "88dd308437763a0085a86b354bd229b7",
       "sourceName": "src/interfaces/IInterchainSecurityModule.sol",
       "solcConfig": {
@@ -1384,7 +1394,7 @@
       }
     },
     "src/interfaces/IMailbox.sol": {
-      "lastModificationDate": 1697747455213,
+      "lastModificationDate": 1697906419900,
       "contentHash": "32069b2f9d437796c90efd29578ac606",
       "sourceName": "src/interfaces/IMailbox.sol",
       "solcConfig": {
@@ -1426,7 +1436,7 @@
       }
     },
     "src/interfaces/IMessageRecipient.sol": {
-      "lastModificationDate": 1697747455210,
+      "lastModificationDate": 1697906419900,
       "contentHash": "528e49377e9af17bc359f85250fe99c2",
       "sourceName": "src/interfaces/IMessageRecipient.sol",
       "solcConfig": {
@@ -1466,7 +1476,7 @@
       }
     },
     "src/interfaces/ISchemaRegistry.sol": {
-      "lastModificationDate": 1697747455214,
+      "lastModificationDate": 1697906419900,
       "contentHash": "88556a73405ee7c59bac90cd53ae8dea",
       "sourceName": "src/interfaces/ISchemaRegistry.sol",
       "solcConfig": {
@@ -1509,7 +1519,7 @@
       }
     },
     "src/interfaces/ISchemaResolver.sol": {
-      "lastModificationDate": 1697747455213,
+      "lastModificationDate": 1697906419901,
       "contentHash": "3c5a5f23185b9296feb5af93a8ad36ea",
       "sourceName": "src/interfaces/ISchemaResolver.sol",
       "solcConfig": {
@@ -1551,7 +1561,7 @@
       }
     },
     "test/Counter.t.sol": {
-      "lastModificationDate": 1697747156459,
+      "lastModificationDate": 1697906419901,
       "contentHash": "25ed71580125b4e00b19bed1973a22ff",
       "sourceName": "test/Counter.t.sol",
       "solcConfig": {

@@ -22,22 +22,7 @@ contract InvoiceResolver is SchemaResolver {
         Attestation calldata attestation,
         uint256 /*value*/
     ) internal override returns (bool) {
-        // (uint256 postId, string memory attesterSector) = abi.decode(
-        //     attestation.data,
-        //     (uint256, string)
-        // );
-        // // get post sector from post contract
-        // string memory retrievedPostSector = postContract.getPostSector(postId);
-        // // compare post sector with attester sector. if true, call updateAttestCount function in post contract by passing postId and also return true
-        // if (
-        //     keccak256(abi.encodePacked(retrievedPostSector)) ==
-        //     keccak256(abi.encodePacked(attesterSector))
-        // ) {
-        //     postContract.updateAttestCount(postId);
-        //     return true;
-        // } else {
-        //     return false;
-        // }
+        //WIP: check if the attestation from the merchant exists
     }
 
     function onRevoke(
@@ -46,9 +31,4 @@ contract InvoiceResolver is SchemaResolver {
     ) internal pure override returns (bool) {
         return true;
     }
-
-    //change post contract address
-    // function updatePostContractAddress(address _postContractAddr) external {
-    //     postContract = Post(_postContractAddr);
-    // }
 }

@@ -17,12 +17,14 @@ enabled = true
 
 [rpc_endpoints]
 polygon-mumbai = "${POLYGON_MUMBAI_RPC}"
-linea-testnet = "${LINEA_TESTNET_RPC}"
-neon-evm = "${NEON_EVM_TESTNET_RPC}"
 polygon-zkevm = "${POLYGON_ZKEVM_TESTNET_RPC}"
-ziliqa-testnet = "${ZIL_TESTNET_RPC}"
+scroll-sepolia = "${SCROLL_SEPOLIA_RPC}"
+mantle-testnet = "${MANTLE_TESTNET_RPC}"
+sepolia = "${SEPOLIA_RPC}"
 
 [etherscan]
 polygon-mumbai = { key = "${POLYGON_ETHERSCAN_API_KEY}", url = "https://api-testnet.polygonscan.com/api" }
-linea-testnet = { key = "${LINEA_ETHERSCAN_API_KEY}", url = "https://api.lineascan.build/api" }
-polygon-zkevm = { key = "${POLYGON_ZKEVM_ETHERSCAN_API_KEY}", url = "https://api-testnet-zkevm.polygonscan.com/" }
+polygon-zkevm = { key = "${POLYGON_ZKEVM_ETHERSCAN_API_KEY}", url = "https://api-testnet-zkevm.polygonscan.com/api" }
+scroll-sepolia = { key = "${SCROLL_SEPOLIA_ETHERSCAN_API_KEY}", url = "https://api-sepolia.scrollscan.com/api" }
+mantle-testnet = { key = "${MANTLE_TESTNET_API_KEY}", url = "https://explorer.testnet.mantle.xyz/api " }
+sepolia = { key = "${ETHERSCAN_API_KEY}", url = "https://api-sepolia.etherscan.io/api" }

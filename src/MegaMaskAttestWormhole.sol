@@ -33,7 +33,7 @@ interface IEAS {
  * @title MegaMask
  * @dev A smart contract for managing product inventory and attestation on different chains.
  */
-contract MegaMaskAttest is IEAS, IWormholeReceiver {
+contract MegaMaskAttestWormhole is IEAS, IWormholeReceiver {
     //-----------------------------
     //DEFINE VARIABLES & CONSTANTS
     //-----------------------------
